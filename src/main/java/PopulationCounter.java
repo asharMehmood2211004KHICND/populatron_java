@@ -9,10 +9,19 @@ public class PopulationCounter {
     public static void main(String[] args) throws Exception {
         long sum = 0;
         String path = args[0];
-        List<String> lines = Files.readAllLines(Paths.get(path), StandardCharsets.ISO_8859_1);
+
+        // List<String> lines = Files.readAllLines(Paths.get(path), StandardCharsets.ISO_8859_1);
+
+        ReadFile readFile = new ReadFile(); 
+
+        List<String> lines =  readFile.getLines(path);
+
+        System.out.println(lines);
+
+        
         for(int i = 1; i < lines.size(); i++) {
             String line = lines.get(i);
-            String[] terms = line.split(",");
+            String[] terms = line.split(",");           // parse 
             String popText = terms[4];
             if(popText.length() == 0) {
                 continue;
