@@ -6,13 +6,22 @@
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
+import com.google.errorprone.annotations.DoNotMock;
+
+
+
+
 
 
 public class PopulationCounterTest {
@@ -55,6 +64,7 @@ public class PopulationCounterTest {
     }
 
 
+    // parsing the data 
     @Test
     public void testParseData() throws IOException{
 
@@ -64,23 +74,27 @@ public class PopulationCounterTest {
         List<String> parsedData = myParseData.parseMyData(lines);
 
          // Assert
-         assertEquals(20430, parsedData);
+         assertEquals(1586977, parsedData.size());
             // assertEquals(2043, 2043);
 
 
 
     }
 
+    @Mock  SumPopulation sumPopulation;
+    @Mock ParseData parseData;
+    @Mock ReadFile readFile;
 
-
-
-    // A separate class reads from the CSV file.
 
     // @Test
-    // public void testReadFile (){
-    //     ReadFile readFile = mock (ReadFile.)
+    // List<String> myList = new ArrayList<String>() ;
 
+    // public List<String> MockTestReadFile() throws IOException{
+    //     when(readFile.getLines("file_path")).thenReturn(myList);
     // }
+
+
+
 
 
 
